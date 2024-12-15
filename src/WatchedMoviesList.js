@@ -1,9 +1,9 @@
-export default function WatchedMoviesList({ watched }) {
+export default function WatchedMoviesList({ watched,RemoveMovie  }) {
     return (
       <ul className="list">
         {watched.map((movie) => (
-          <li key={movie.imdbID}>
-            <img src={movie.Poster} alt={`${movie.Title} poster`} />
+          <li key={movie.imdbID} > 
+            <img src={movie.poster} alt={`${movie.title} poster`} /> 
             <h3>{movie.Title}</h3>
             <div>
               <p>
@@ -12,12 +12,13 @@ export default function WatchedMoviesList({ watched }) {
               </p>
               <p>
                 <span>🌟</span>
-                <span>{movie.userRating}</span>
+                <span>{movie.UserRating}</span>
               </p>
               <p>
                 <span>⏳</span>
-                <span>{movie.runtime} min</span>
+                <span>{movie.runtime} </span>
               </p>
+              <button className="btn-delete" onClick={()=>RemoveMovie(movie.imdbID) } >Remove</button>
             </div>
           </li>
         ))}

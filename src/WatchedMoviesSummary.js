@@ -1,4 +1,4 @@
-export default function WatchedMoviesSummary({ watched, avgImdbRating, avgUserRating, avgRuntime,}) {
+export default function WatchedMoviesSummary({ watched}) {
 
     
  return (
@@ -9,18 +9,7 @@ export default function WatchedMoviesSummary({ watched, avgImdbRating, avgUserRa
             <span>#️⃣</span>
             <span>{watched.length} movies</span>
           </p>
-          <p>
-            <span>⭐️</span>
-            <span>{avgImdbRating.toFixed(1)}</span>
-          </p>
-          <p>
-            <span>🌟</span>
-            <span>{avgUserRating.toFixed(1)}</span>
-          </p>
-          <p>
-            <span>⏳</span>
-            <span>{avgRuntime.toFixed(1)} min</span>
-          </p>
+          
         </div>
       </div>
     );

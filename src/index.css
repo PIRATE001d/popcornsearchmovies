@@ -50,20 +50,46 @@ body {
 }
 
 .box {
-  width: 42rem;
-  max-width: 42rem;
+  width: 80rem;
   background-color: var(--color-background-500);
   border-radius: 0.9rem;
   overflow: scroll;
   position: relative;
 }
 
-.loader {
-  text-align: center;
-  text-transform: uppercase;
-  font-size: 2rem;
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%; /* Ensure it takes the full height of the Box */
+}
+
+.spinner {
+  border: 8px solid #f3f3f3; /* Light background */
+  border-top: 8px solid #7950f2; /* Blue color for the top */
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1.5s linear infinite;
+  margin-bottom: 20px; /* Space between spinner and text */
+}
+
+.loading-text {
+  font-size: 18px;
   font-weight: 600;
-  margin: 4.8rem;
+  color: #7950f2;
+  letter-spacing: 1px;
+}
+
+/* Spinner Animation */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .error {
@@ -168,7 +194,8 @@ body {
 }
 
 .list img {
-  width: 100%;
+  width: 120%;
+
   grid-row: 1 / -1;
 }
 
@@ -191,17 +218,18 @@ body {
 .btn-delete {
   position: absolute;
   right: 2.4rem;
-
-  height: 1.8rem;
-  aspect-ratio: 1;
-  border-radius: 50%;
+  top: 42%;
+  padding: 0.6rem 1rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  background-color: #ff4d4d;
+  color: white;
   border: none;
-  background-color: var(--color-red);
-  color: var(--color-background-900);
-  font-size: 0.9rem;
-  font-weight: bold;
+  border-radius: 30px;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: background-color 0.3s, transform 0.3s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .btn-delete:hover {
@@ -325,9 +353,9 @@ body {
   aspect-ratio: 1;
   border-radius: 50%;
   border: none;
-  /* background-color: var(--color-text); */
-  background-color: #fff;
-  color: var(--color-background-500);
+background-color: var(--color-text); 
+ 
+ 
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.8);
   font-family: sans-serif;
   font-size: 2.4rem;
@@ -388,4 +416,71 @@ EMPTY STAR
 .box::-webkit-scrollbar, 
 .list::-webkit-scrollbar {
   display: none; /* Hides scrollbar in Chrome, Edge, and Safari */
+}
+
+
+.movie-info-container {
+  padding: 2.4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: auto;
+  max-width: 80rem;
+
+}
+
+.movie-info-container .btn-back {
+  border: none;
+  cursor: pointer;
+  margin-bottom: 20px;
+  font-size: 2.2rem;
+  font-weight: 700;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  transition: transform 0.3s ease;
+}
+
+.movie-info-container .btn-back:hover {
+  transform: scale(1.1);
+}
+
+.movie-info-container .movie-poster {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  border-radius: 0.9rem;
+  margin-bottom: 2.4rem;
+}
+
+.movie-info-container .movie-details {
+  font-family: Arial, sans-serif;
+  color: var(--color-text);
+  text-align: center;
+  padding: 2rem;
+}
+
+.movie-info-container h2 {
+  text-transform: uppercase;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 2.5rem;
+  font-weight: bold;
+
+  margin-bottom: 1.6rem;
+  color: var(--color-primary);
+}
+
+.movie-info-container p {
+  font-size: 1.6rem;
+  margin: 0.8rem 0;
+  color: var(--color-text-dark);
+}
+
+.movie-info-container p strong {
+  font-weight: 700;
+  color: var(--color-primary);
+  text-transform: uppercase;
+}
+
+.movie-info-container .movie-details p:last-child {
+  margin-bottom: 0;
 }
