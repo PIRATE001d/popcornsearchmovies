@@ -23,32 +23,43 @@ export default function App() {
 
 
 
-  useEffect(() => { 
+  useEffect(() => {
+    const controller = new AbortController();
+  
     const fetchMovies = async () => {
       setIsLoading(true); 
+      
+  
       try {
-        const response = await fetch(`http://www.omdbapi.com/?apikey=${KEY}&s=${query}`);
-
+        const response = await fetch(`http://www.omdbapi.com/?apikey=${KEY}&s=${query}`, {
+          signal: controller.signal,
+        });
+  
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
-
+  
         const data = await response.json();
-
-        if (data.Search) {
-          setMovies(data.Search);
-        } else {
-          setMovies([]); 
-        }
+  
+        setMovies(data.Search || [] ); // Default to an empty array if no results
       } catch (error) {
-        console.error("Fetch error:", error);
-        setError(error.message);
+        if (error.name === "AbortError") {
+          console.log("Fetch aborted");
+
+        } else {
+          console.error("Fetch error:", error);
+          setError(error.message); 
+        }
       } finally {
-        setIsLoading(false); 
+        setIsLoading(false);
       }
     };
-
+  
     fetchMovies();
+  
+    return () => {
+      controller.abort(); // Cleanup: Abort ongoing fetch request
+    };
   }, [query]);
 
   function handleGetMovieInfo(selectedMovie) {
@@ -60,8 +71,14 @@ export default function App() {
   }
 
   function handleRemoveMovieFromWatched(movie) {
-    setWatched((watched)=> watched.filter((movie) => movie.imdbID!== movie.imdbID))
+    setWatched((watched)=> watched.filter((movie) => movie.imdbID!== movie.imdbID ))
   }
+
+ 
+
+  
+
+
 
   return (
     <>

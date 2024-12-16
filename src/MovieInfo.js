@@ -27,6 +27,7 @@ const WatchedMovieRating = watched.find((movie) => movie.imdbID === imdbID)?.Use
     Actors: actors,
     Awards: awards,
     Language: language,
+    Type: type,
   } = movieInfo;
 
 
@@ -53,6 +54,15 @@ const WatchedMovieRating = watched.find((movie) => movie.imdbID === imdbID)?.Use
     fetchMovieInfo();
   }, [imdbID]);
 
+    useEffect(() => {
+      if (!title) return;
+
+      document.title = `${type} - ${title}`;
+
+       return ()=>{  document.title =  "PopCorn Finder" ;}
+
+      }
+      , [title , type]) 
 
 
 
@@ -77,6 +87,25 @@ const WatchedMovieRating = watched.find((movie) => movie.imdbID === imdbID)?.Use
     setSelectedMovie(null)
   
    }
+
+
+    useEffect(() => {
+      function handleKeyDown(event) {
+        if (event.key === "Escape") {
+          setSelectedMovie(null);
+         
+
+        }
+      }
+       document.addEventListener("keydown", handleKeyDown);
+       return () => {
+         document.removeEventListener("keydown", handleKeyDown);
+       };
+
+          
+
+
+           }, [ setSelectedMovie ]);
 
 
 

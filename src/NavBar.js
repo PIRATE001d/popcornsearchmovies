@@ -16,7 +16,7 @@ function Logo () {
   return (  
   <div className="logo">
     <span role="img">🍿</span>
-    <h1>usePopcorn</h1>
+    <h1>PopCorn Finder</h1>
   </div>
   )
 
