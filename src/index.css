@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Blinker:wght@100;200;300;400;600;700;800;900&family=Luckiest+Guy&display=swap');
+
+
 :root {
   --color-primary: #6741d9;
   --color-primary-light: #7950f2;
@@ -8,6 +11,7 @@
   --color-background-900: #212529;
   --color-red: #fa5252;
   --color-red-dark: #e03131;
+  --global-fontfamily: "Luckiest Guy", cursive;
 }
 
 * {
@@ -102,18 +106,21 @@ body {
 
 .logo {
   display: flex;
+  font-family: var(--global-fontfamily);
   align-items: center;
-  gap: 0.8rem;
+  align-items: flex-end; /* Aligns items at the bottom of the flex container */
 }
 
 .logo span {
-  font-size: 3.2rem;
+  font-size: 4rem;
+
 }
 
 .logo h1 {
-  font-size: 2.4rem;
-  font-weight: 600;
+  font-size: 2.7rem;
   color: #fff;
+  word-spacing: 5px;
+  letter-spacing: 0.4rem;
 }
 
 .search {
