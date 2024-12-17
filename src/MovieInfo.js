@@ -84,6 +84,9 @@ export function MovieInfo({ imdbID, setSelectedMovie, handleAddMovieToWatched, w
     };
   }, [setSelectedMovie]);
 
+
+
+
   return (
     <>
       {isLoading ? (
