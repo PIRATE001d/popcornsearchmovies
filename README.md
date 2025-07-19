@@ -26,3 +26,4 @@ Ensure you have the following installed:
    ```bash
    git clone https://github.com/your-username/popcornsearchmovies.git
    cd popcornsearchmovies
+   npm or yarn install
